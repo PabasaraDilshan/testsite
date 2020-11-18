@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<style>
+    button 
+    {
+        position:sticky; 
+        margin:0 auto; 
+        font-weight: bold; 
+        padding:0.6em 2em; 
+        border-radius: 8px; 
+        color:#fff; 
+        background-color:rgb(103, 58, 183); 
+        font-size:1.1em; 
+        border:0; 
+        cursor:pointer;
+        }
+    button:hover{
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
+    #container
+    {
+       text-align: center; 
+    }
+    #spn
+    {
+        display: none;
+    }
+    
+</style>
+<body>
+    <div id = "container">
+        <button id = "btnSearch" onclick="clock();">Start counter</button>
+        <div id = "spn">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfpsuBKb-GxJzYCjl5gp9cCSL0jwUuzHEUVhYO2P0S7wLs8vw/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        </div>
+    </div>  
+
+</body>
+
+
+<script>
+
+function addthing(){
+/*var iframe = document.createElement('iframe');
+iframe.src = "https://docs.google.com/forms/d/e/1FAIpQLSfpsuBKb-GxJzYCjl5gp9cCSL0jwUuzHEUVhYO2P0S7wLs8vw/viewform?embedded=true";
+iframe.width = "100%";
+iframe.height = "100%";
+iframe.frameBorder = "0";
+iframe.marginheight="0";
+iframe.marginWidth = "0";
+iframe.style="overflow:hidden;display:block; position: absolute; height: 100%; width: 100%;"
+document.body.appendChild(iframe);*/
+document.getElementById("spn").style.display = "block";
+}
+var myTimer;
+function timing(){
+    var myTimer = setInterval(myClock, 1000);
+     var c = 1200;
+
+     function myClock() {
+        c = c-1
+       document.getElementById("btnSearch").innerHTML = Math.floor(c/60) + "min" + " " + c%60 + "s";
+       if (c == 0) {
+         document.getElementById("btnSearch").innerHTML = "Your Time is Over, Please Submit"  
+         clearInterval(myTimer);
+       }
+     }
+}
+function clock(){
+    addthing();
+    timing();
+    document.getElementById('btnSearch').disabled = 'disabled';
+    }
+</script>
+</html>
